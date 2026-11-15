@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchs - Morocco 2030</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+                            <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <img src="logo.png" alt="Morocco 2030 Logo" class="logo-img">
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">Morocco 2030</span>
+                <span class="logo-subtitle">World Cup Guide</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item" data-i18n="nav_home">Accueil</a>
+            <a href="map.html" class="nav-item" data-i18n="nav_map">Carte</a>
+            <a href="matches.html" class="nav-item" data-i18n="nav_matches">Matchs</a>
+            <a href="culture.html" class="nav-item" data-i18n="nav_culture">Culture</a>
+            <a href="activities.html" class="nav-item" data-i18n="nav_activities">Activit&eacute;s</a>
+            <a href="itineraries.html" class="nav-item" data-i18n="nav_itineraries">Itin&eacute;raires</a>
+            <a href="services.html" class="nav-item" data-i18n="nav_services">Services</a>
+            <a href="chat.html" class="nav-item" data-i18n="nav_chat">Assistant</a>
+        </nav>
+        <div class="auth-buttons">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langBtn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="currentLang">Fran&ccedil;ais</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="fr" class="active">Fran&ccedil;ais</a>
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="ar">&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;</a>
+                    <a href="#" data-lang="es">Espa&ntilde;ol</a>
+                </div>
+            </div>
+            
+            <!-- Notifications Icon -->
+            <div class="notification-wrapper">
+                <button class="notif-btn" id="notifBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notif-badge-indicator"></span>
+                </button>
+                <div class="notif-dropdown" id="notifDropdown">
+                    <div class="notif-header">
+                        <h4 data-i18n="notifications_title">Notifications</h4>
+                        <span class="mark-read" data-i18n="mark_all_read">Marquer tout comme lu</span>
+                    </div>
+                    <div class="notif-list">
+                        <!-- Notifications injected via script -->
+                    </div>
+                </div>
+            </div>
+            <div id="authContainer" class="auth-buttons-wrapper">
+                <!-- Fallback content if JS is slow -->
+                <a href="login.html" class="btn-login" data-i18n="login_btn">Connexion</a>
+                <a href="signup.html" class="btn-signup" data-i18n="signup_btn">S'inscrire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Matches Hero -->
+    <section class="matches-hero">
+        <div class="hero-badge-pill" data-i18n="hero_badge"><i class="fa-solid fa-trophy"></i> FIFA World Cup 2030</div>
+        <h1 data-i18n="matches_title">Calendrier des Matchs</h1>
+        <p data-i18n="matches_subtitle">Ne manquez aucun match de la Coupe du Monde 2030</p>
+
+        <div class="search-bar" style="margin: 0 auto 30px; background: white;">
+            <input type="text" id="main-search-input" data-i18n="search_placeholder" placeholder="Rechercher un lieu, ville, hôtel...">
+            <button id="main-search-btn"><i class="fa-solid fa-search"></i></button>
+            <div id="search-results" class="search-results-dropdown"></div>
+        </div>
+
+        <div class="opening-match-card" style="position: relative;">
+            <div class="card-actions-overlay disable-selection" style="position: absolute; top: 12px; right: 12px; display: flex; gap: 8px; z-index: 10;">
+                <button class="action-btn-circle" onclick="openAvisModal('Match', 1, 'Maroc VS Portugal', event)" title="Lire / Ajouter un avis" style="background: rgba(255,255,255,0.95); border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: all 0.2s;">
+                    <i class="fa-regular fa-comment-dots" style="font-size: 1.1rem; color: #4b5563;"></i>
+                </button>
+                <button class="action-btn-circle" onclick="toggleFavori('Match', 1, 'Maroc VS Portugal', event, this)" title="Ajouter aux favoris" style="background: rgba(255,255,255,0.95); border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: all 0.2s;">
+                    <i class="fa-regular fa-bookmark" style="font-size: 1.1rem; color: #4b5563;"></i>
+                </button>
+            </div>
+            <div class="match-tag" data-i18n="opening_match_label">Match d'ouverture</div>
+            <div class="teams-large">
+                <div class="team-large">
+                    <span class="team-code-large">MA</span>
+                    <span class="team-name-large" data-i18n="team_maroc">Maroc</span>
+                </div>
+                <div class="vs-large">VS</div>
+                <div class="team-large">
+                    <span class="team-code-large">PT</span>
+                    <span class="team-name-large" data-i18n="team_portugal">Portugal</span>
+                </div>
+            </div>
+
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="count-val" id="days">00</span>
+                    <span class="count-label" data-i18n="days_label">jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count-val" id="hours">00</span>
+                    <span class="count-label" data-i18n="hours_label">heures</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count-val" id="minutes">00</span>
+                    <span class="count-label" data-i18n="mins_label">min</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count-val" id="seconds">00</span>
+                    <span class="count-label" data-i18n="secs_label">sec</span>
+                </div>
+            </div>
+
+            <div class="match-meta-large">
+                <a href="map.html?location=37" style="color: inherit; text-decoration: none; border-bottom: 1px dashed #ffffff80;"><span data-i18n="stadium_casablanca"><i class="fa-solid fa-location-dot"></i> Grand Stade de Casablanca, Casablanca</span></a>
+                <span><i class="fa-regular fa-calendar"></i> 11/06/2030</span>
+                <span><i class="fa-regular fa-clock"></i> 20:00</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matches Grid Section -->
+    <section class="matches-list-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="all_matches_title"><i class="fa-regular fa-calendar-days"></i> Tous les matchs</h2>
+            </div>
+
+            <div class="matches-grid" id="matchesContainer">
+                <p style="grid-column: 1 / -1; text-align: center;" data-i18n="loading_matches">Chargement des matchs en cours...</p>
+            </div>
+
+            <!-- Pagination Container -->
+            <div id="matches-pagination" class="pagination-container"></div>
+        </div>
+    </section>
+
+    <script src="translations.js"></script>
+    <script src="user_actions.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="matches.js"></script>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+
+</html>

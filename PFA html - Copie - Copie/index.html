@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco 2030 - World Cup Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <img src="logo.png" alt="Morocco 2030 Logo">
+            </div>
+            <h1 class="splash-title">Morocco 2030</h1>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <img src="logo.png" alt="Morocco 2030 Logo" class="logo-img">
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">Morocco 2030</span>
+                <span class="logo-subtitle">World Cup Guide</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item" data-i18n="nav_home">Accueil</a>
+            <a href="map.html" class="nav-item" data-i18n="nav_map">Carte</a>
+            <a href="matches.html" class="nav-item" data-i18n="nav_matches">Matchs</a>
+            <a href="culture.html" class="nav-item" data-i18n="nav_culture">Culture</a>
+            <a href="activities.html" class="nav-item" data-i18n="nav_activities">Activit&eacute;s</a>
+            <a href="itineraries.html" class="nav-item" data-i18n="nav_itineraries">Itin&eacute;raires</a>
+            <a href="services.html" class="nav-item" data-i18n="nav_services">Services</a>
+            <a href="chat.html" class="nav-item" data-i18n="nav_chat">Assistant</a>
+        </nav>
+        <div class="auth-buttons">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langBtn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="currentLang">Fran&ccedil;ais</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="fr" class="active">Fran&ccedil;ais</a>
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="ar">&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;</a>
+                    <a href="#" data-lang="es">Espa&ntilde;ol</a>
+                </div>
+            </div>
+
+            <!-- Notifications Icon -->
+            <div class="notification-wrapper">
+                <button class="notif-btn" id="notifBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notif-badge-indicator"></span>
+                </button>
+                <div class="notif-dropdown" id="notifDropdown">
+                    <div class="notif-header">
+                        <h4 data-i18n="notifications_title">Notifications</h4>
+                        <span class="mark-read" data-i18n="mark_all_read">Marquer tout comme lu</span>
+                    </div>
+                    <div class="notif-list">
+                        <!-- Notifications injected via script -->
+                    </div>
+                </div>
+            </div>
+            <div id="authContainer" class="auth-buttons-wrapper">
+                <!-- Fallback content if JS is slow -->
+                <a href="login.html" class="btn-login" data-i18n="login_btn">Connexion</a>
+                <a href="signup.html" class="btn-signup" data-i18n="signup_btn">S'inscrire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="hada.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-star"></i> <span data-i18n="hero_badge">Coupe du Monde FIFA 2030</span>
+            </div>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_1">Votre Guide</span> <span class="highlight-red"
+                    data-i18n="hero_title_2">Intelligent</span><br>
+                <div class="hero-title-main">
+                    <span class="highlight-red" data-i18n="hero_title_3">Pour</span>
+                    <span class="highlight-white" data-i18n="hero_title_4">la</span>
+                    <span class="highlight-green" data-i18n="hero_cup">Coupe</span>
+                    <span class="highlight-green" data-i18n="hero_of">du</span>
+                    <span class="highlight-green" data-i18n="hero_world">Monde</span>
+                    <span class="highlight-red" dir="ltr">2030</span>
+                </div>
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Découvrez le Maroc comme jamais auparavant avec notre
+                assistant IA</p>
+
+            <div id="discover-reco-btn" style="margin-bottom: 30px; text-align: center; display: none;">
+                <a href="recommendation.html"
+                    style="display: inline-block; padding: 15px 30px; font-size: 1.1rem; color: #fff; background: linear-gradient(135deg, #e50027, #ff4d4d); text-decoration: none; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(229, 0, 39, 0.4); transition: transform 0.2s;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="discover_reco_btn">Découvrir vos
+                        recommandations</span>
+                </a>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="main-search-input" placeholder="Rechercher un lieu, ville, hôtel..."
+                    data-i18n="search_placeholder">
+                <button id="main-search-btn"><i class="fa-solid fa-search"></i></button>
+                <div id="search-results" class="search-results-dropdown"></div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>0</h3>
+                    <p data-i18n="stat_destinations">Destinations</p>
+                </div>
+                <div class="stat-card">
+                    <h3>0</h3>
+                    <p data-i18n="stat_matches">Matchs</p>
+                </div>
+                <div class="stat-card">
+                    <h3>14</h3>
+                    <p data-i18n="stat_destinations">Destinations</p>
+                </div>
+                <div class="stat-card">
+                    <h3>5</h3>
+                    <p data-i18n="stat_services">Services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <br>
+                <br>
+                <br>
+                <h2 data-i18n="categories_title"><i class="fa-solid fa-bolt"></i> Catégories</h2>
+            </div>
+            <div class="categories-list" id="categories-list">
+                <div class="category-card active" data-filter="all">
+                    <div class="cat-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <span data-i18n="all">Tout</span>
+                </div>
+                <div class="category-card" data-filter="Stade">
+                    <div class="cat-icon bg-orange"><i class="fa-solid fa-trophy"></i></div>
+                    <span data-i18n="stadiums">Stades</span>
+                </div>
+                <div class="category-card" data-filter="Hôtel">
+                    <div class="cat-icon bg-blue"><i class="fa-solid fa-hotel"></i></div>
+                    <span data-i18n="hotels">Hôtels</span>
+                </div>
+                <div class="category-card" data-filter="Restaurant">
+                    <div class="cat-icon bg-red"><i class="fa-solid fa-utensils"></i></div>
+                    <span data-i18n="restaurants">Restaurants</span>
+                </div>
+                <div class="category-card" data-filter="Attraction">
+                    <div class="cat-icon bg-green"><i class="fa-solid fa-landmark"></i></div>
+                    <span data-i18n="attractions">Attractions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="recommendations-section" id="reco-section" style="display: none;">
+        <div class="container">
+            <div class="reco-container">
+                <div class="reco-header">
+                    <h2 style="margin:0; font-size: 1.3rem; display:flex; align-items:center; gap:10px;">
+                        <span style="color:#ffc107; font-size: 1.5rem;">⭐</span>
+                        <span data-i18n="recommended_foryou">Recommandé pour vous</span>
+                    </h2>
+                </div>
+                <div class="reco-grid" id="reco-grid">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="matches-section">
+        <div class="container">
+            <div class="section-header row">
+                <h2><i class="fa-regular fa-calendar"></i> <span data-i18n="upcoming_matches">Matchs à venir</span></h2>
+                <a href="matches.html" class="view-all" data-i18n="view_all">Voir tout <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="matches-grid" id="home-matches-grid">
+                <p style="text-align:center; padding:20px; color:#666;">Chargement des matchs...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-chart-line"></i> <span data-i18n="popular_destinations">Destinations
+                        populaires</span></h2>
+            </div>
+            <div class="destinations-grid" id="home-destinations-grid">
+                <p style="text-align:center; padding:20px; color:#666;">Chargement des activités...</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="translations.js"></script>
+    <script src="user_actions.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Data injected via JS -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

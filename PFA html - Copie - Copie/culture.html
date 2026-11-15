@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture - Morocco 2030</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="premium.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+            <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <img src="logo.png" alt="Morocco 2030 Logo" class="logo-img">
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">Morocco 2030</span>
+                <span class="logo-subtitle">World Cup Guide</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item" data-i18n="nav_home">Accueil</a>
+            <a href="map.html" class="nav-item" data-i18n="nav_map">Carte</a>
+            <a href="matches.html" class="nav-item" data-i18n="nav_matches">Matchs</a>
+            <a href="culture.html" class="nav-item" data-i18n="nav_culture">Culture</a>
+            <a href="activities.html" class="nav-item" data-i18n="nav_activities">Activit&eacute;s</a>
+            <a href="itineraries.html" class="nav-item" data-i18n="nav_itineraries">Itin&eacute;raires</a>
+            <a href="services.html" class="nav-item" data-i18n="nav_services">Services</a>
+            <a href="chat.html" class="nav-item" data-i18n="nav_chat">Assistant</a>
+        </nav>
+        <div class="auth-buttons">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langBtn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="currentLang">Fran&ccedil;ais</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="fr" class="active">Fran&ccedil;ais</a>
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="ar">&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;</a>
+                    <a href="#" data-lang="es">Espa&ntilde;ol</a>
+                </div>
+            </div>
+            
+            <!-- Notifications Icon -->
+            <div class="notification-wrapper">
+                <button class="notif-btn" id="notifBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notif-badge-indicator"></span>
+                </button>
+                <div class="notif-dropdown" id="notifDropdown">
+                    <div class="notif-header">
+                        <h4 data-i18n="notifications_title">Notifications</h4>
+                        <span class="mark-read" data-i18n="mark_all_read">Marquer tout comme lu</span>
+                    </div>
+                    <div class="notif-list">
+                        <!-- Notifications injected via script -->
+                    </div>
+                </div>
+            </div>
+            <div id="authContainer" class="auth-buttons-wrapper">
+                <!-- Fallback content if JS is slow -->
+                <a href="login.html" class="btn-login" data-i18n="login_btn">Connexion</a>
+                <a href="signup.html" class="btn-signup" data-i18n="signup_btn">S'inscrire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Culture Hero -->
+    <section class="culture-hero">
+        <h1 data-i18n="culture_title">Découvrir le Maroc</h1>
+        <p data-i18n="culture_subtitle">Culture, traditions et patrimoine</p>
+
+        <!-- Search Bar -->
+        <div class="search-bar" style="margin: 30px auto !important;">
+            <input type="text" id="main-search-input" placeholder="Rechercher un lieu, ville, hôtel..." data-i18n="search_placeholder">
+            <button id="main-search-btn"><i class="fa-solid fa-search"></i></button>
+            <div id="search-results" class="search-results-dropdown"></div>
+        </div>
+
+        <!-- Introductory Box (Exact match for Photo) -->
+        <div class="culture-intro-box">
+            <p class="culture-intro-text" data-i18n="culture_intro">Un voyage à travers les millénaires, où chaque tradition raconte l'âme vibrante du Maroc.</p>
+        </div>
+    </section>
+
+
+    <!-- Content Sections -->
+    <section class="culture-content reveal" id="categories-view">
+        <div class="container">
+
+            <!-- Useful Phrases Section -->
+            <div class="phrases-section reveal">
+                <h2 class="section-title">
+                    <div class="icon-box-green"><i class="fa-regular fa-comments"></i></div> <span data-i18n="phrases_title">Phrases utiles</span>
+                </h2>
+                <div class="phrases-grid">
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_bonjour">Bonjour</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">سلام</span>
+                            <span class="phrase-phonetic">- Salam</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_merci">Merci</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">شكرا</span>
+                            <span class="phrase-phonetic">- Shukran</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_svp">S'il vous plaît</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">عفاك</span>
+                            <span class="phrase-phonetic">- Afak</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_au_revoir">Au revoir</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">بسلامة</span>
+                            <span class="phrase-phonetic">- Bslama</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_oui">Oui</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">نعم</span>
+                            <span class="phrase-phonetic">- Na'am</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_non">Non</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">لا</span>
+                            <span class="phrase-phonetic">- La</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_combien">Combien ?</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">بشحال؟</span>
+                            <span class="phrase-phonetic">- Bshal?</span>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-context" data-i18n="phrase_aidez_moi">Aidez-moi</span>
+                        <div class="phrase-main">
+                            <span class="phrase-ar">عاوني</span>
+                            <span class="phrase-phonetic">- Awni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="text-align: center; margin-bottom: 40px; margin-top: 60px;">
+                <h2 style="font-size: 2.5rem; color: #111827; margin-bottom: 10px;" data-i18n="culture_categories_title">Catégories Culturelles</h2>
+            </div>
+
+            <!-- Culture Categories Grid -->
+            <div class="topics-grid" id="main-categories-grid">
+                <div class="topic-card border-orange cat-card reveal" data-category="histoire">
+                    <div class="topic-header">
+                        <div class="topic-icon-bg bg-orange-light">
+                            <i class="fa-solid fa-landmark-dome" style="color: #FF6D00;"></i>
+                        </div>
+                        <h3 data-i18n="cat_histoire_title">Histoire du Maroc</h3>
+                    </div>
+                    <p data-i18n="cat_histoire_desc">Présentation générale de l’histoire et des grandes villes historiques comme : Fès, Marrakech et Meknès.</p>
+                    <a href="javascript:void(0)" class="topic-link"><span data-i18n="discover_btn">Découvrir</span> <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="topic-card border-green cat-card reveal" data-category="traditions">
+                    <div class="topic-header">
+                        <div class="topic-icon-bg bg-green-light">
+                            <i class="fa-solid fa-handshake-angle" style="color: #00C853;"></i>
+                        </div>
+                        <h3 data-i18n="cat_traditions_title">Traditions et coutumes</h3>
+                    </div>
+                    <p data-i18n="cat_traditions_desc">Hospitalité marocaine, vêtements (djellaba, caftan), cérémonies, mariages et habitudes culturelles.</p>
+                    <a href="javascript:void(0)" class="topic-link"><span data-i18n="discover_btn">Découvrir</span> <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="topic-card border-yellow cat-card reveal" data-category="gastronomie">
+                    <div class="topic-header">
+                        <div class="topic-icon-bg bg-yellow-light">
+                            <i class="fa-solid fa-utensils" style="color: #FFAB00;"></i>
+                        </div>
+                        <h3 data-i18n="cat_gastronomie_title">Gastronomie marocaine</h3>
+                    </div>
+                    <p data-i18n="cat_gastronomie_desc">Présentation de plats traditionnels populaires : Couscous, Tajine, Pastilla, Thé à la menthe.</p>
+                    <a href="javascript:void(0)" class="topic-link"><span data-i18n="discover_btn">Découvrir</span> <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="topic-card border-blue cat-card reveal" data-category="artisanat">
+                    <div class="topic-header">
+                        <div class="topic-icon-bg bg-blue-light">
+                            <i class="fa-solid fa-palette" style="color: #0091EA;"></i>
+                        </div>
+                        <h3 data-i18n="cat_artisanat_title">Artisanat marocain</h3>
+                    </div>
+                    <p data-i18n="cat_artisanat_desc">Découverte de l’artisanat local : zellige, tapis marocains, poterie, travail du cuir (Fès, Essaouira).</p>
+                    <a href="javascript:void(0)" class="topic-link"><span data-i18n="discover_btn">Découvrir</span> <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="topic-card border-purple cat-card reveal" data-category="festivals">
+                    <div class="topic-header">
+                        <div class="topic-icon-bg bg-purple-light" style="background: #f3e8ff;">
+                            <i class="fa-solid fa-music" style="color: #9C27B0;"></i>
+                        </div>
+                        <h3 data-i18n="cat_festivals_title">Festivals et événements</h3>
+                    </div>
+                    <p data-i18n="cat_festivals_desc">Présentation de festivals culturels au Maroc : Festival Gnaoua d’Essaouira, Festival Mawazine.</p>
+                    <a href="javascript:void(0)" class="topic-link"><span data-i18n="discover_btn">Découvrir</span> <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail View Section (Hidden by default) -->
+    <section class="culture-detail-view hidden" id="detail-view">
+        <div class="container">
+            <button class="btn-back" id="btn-back-categories"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_to_categories">Retour aux catégories</span></button>
+            
+            <div class="detail-header">
+                <div class="detail-icon" id="detail-cat-icon"><i class="fa-solid fa-landmark"></i></div>
+                <div>
+                    <h2 id="detail-cat-title">Titre Catégorie</h2>
+                    <p id="detail-cat-desc" style="color: #6b7280;">Description de la catégorie</p>
+                </div>
+            </div>
+
+            <!-- Items Grid -->
+            <div class="items-grid" id="category-items-grid">
+                <!-- Items injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <script src="translations.js"></script>
+    <script src="user_actions.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="culture_data.js"></script>
+    <script src="culture.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            if (window.applyUITranslations && window.getCurrentLang) {
+                window.applyUITranslations(window.getCurrentLang());
+            }
+        });
+    </script>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+
+</html>

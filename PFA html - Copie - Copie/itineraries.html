@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinéraires - Morocco 2030</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="premium.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+                            <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <img src="logo.png" alt="Morocco 2030 Logo" class="logo-img">
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">Morocco 2030</span>
+                <span class="logo-subtitle">World Cup Guide</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item" data-i18n="nav_home">Accueil</a>
+            <a href="map.html" class="nav-item" data-i18n="nav_map">Carte</a>
+            <a href="matches.html" class="nav-item" data-i18n="nav_matches">Matchs</a>
+            <a href="culture.html" class="nav-item" data-i18n="nav_culture">Culture</a>
+            <a href="activities.html" class="nav-item" data-i18n="nav_activities">Activit&eacute;s</a>
+            <a href="itineraries.html" class="nav-item" data-i18n="nav_itineraries">Itin&eacute;raires</a>
+            <a href="services.html" class="nav-item" data-i18n="nav_services">Services</a>
+            <a href="chat.html" class="nav-item" data-i18n="nav_chat">Assistant</a>
+        </nav>
+        <div class="auth-buttons">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langBtn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="currentLang">Fran&ccedil;ais</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="fr" class="active">Fran&ccedil;ais</a>
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="ar">&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;</a>
+                    <a href="#" data-lang="es">Espa&ntilde;ol</a>
+                </div>
+            </div>
+            
+            <!-- Notifications Icon -->
+            <div class="notification-wrapper">
+                <button class="notif-btn" id="notifBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notif-badge-indicator"></span>
+                </button>
+                <div class="notif-dropdown" id="notifDropdown">
+                    <div class="notif-header">
+                        <h4 data-i18n="notifications_title">Notifications</h4>
+                        <span class="mark-read" data-i18n="mark_all_read">Marquer tout comme lu</span>
+                    </div>
+                    <div class="notif-list">
+                        <!-- Notifications injected via script -->
+                    </div>
+                </div>
+            </div>
+            <div id="authContainer" class="auth-buttons-wrapper">
+                <!-- Fallback content if JS is slow -->
+                <a href="login.html" class="btn-login" data-i18n="login_btn">Connexion</a>
+                <a href="signup.html" class="btn-signup" data-i18n="signup_btn">S'inscrire</a>
+            </div>
+        </div>
+    </header>
+    <section class="itin-hero">
+        <h1 data-i18n="itineraries_title"><i class="fa-solid fa-map-location-dot"></i> Mes Itinéraires</h1>
+        <p data-i18n="itineraries_subtitle">Créez et gérez vos parcours personnalisés pour votre séjour au Maroc</p>
+
+        <div class="search-bar" style="margin: 20px auto 0; background: white;">
+            <input type="text" id="main-search-input" placeholder="Rechercher un lieu, ville, hôtel..." data-i18n="search_placeholder">
+            <button id="main-search-btn"><i class="fa-solid fa-search"></i></button>
+            <div id="search-results" class="search-results-dropdown"></div>
+        </div>
+    </section>
+
+    <div class="itin-container">
+
+        <!-- Left Col: Form -->
+        <div class="itin-form-col">
+            <h2 class="itin-form-title" data-i18n="itin_new_title"><i class="fa-solid fa-circle-plus"></i> Nouvel Itinéraire</h2>
+
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_name_label">Nom de l'itinéraire</label>
+                <input type="text" id="itinNameInput" class="itin-form-input" placeholder="Ex: Weekend à Marrakech" data-i18n="itin_name_placeholder">
+            </div>
+
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_date_label">Date de visite</label>
+                <input type="date" id="itinDateInput" class="itin-form-input" style="color: #666; font-family: 'Inter', sans-serif;">
+            </div>
+
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_desc_label">Description (optionnel)</label>
+                <textarea id="itinDescInput" class="itin-form-input" rows="4" style="resize: none;"
+                    placeholder="Décrivez votre itinéraire..." data-i18n="itin_desc_placeholder"></textarea>
+            </div>
+
+            <div class="itin-form-group" style="margin-bottom: 10px;">
+                <label class="itin-form-label"><span data-i18n="itin_places_label">Lieux à visiter</span> (<span id="places-count">0</span>)</label>
+
+                <!-- Selected Places Container -->
+                <div id="selected-places-container">
+                    <div class="empty-places-placeholder">
+                        <i class="fa-solid fa-map-pin"></i>
+                        <p data-i18n="itin_no_place">Aucun lieu ajouté</p>
+                    </div>
+                </div>
+
+                <!-- Add New Place -->
+                <div class="itin-add-place-row" style="display: flex; gap: 10px; margin-top: 10px;">
+                    <input type="text" id="new-place-text-input" class="itin-form-input"
+                        style="flex: 1; margin-bottom: 0;" placeholder="Ajouter un lieu..." data-i18n="itin_add_place_placeholder">
+                    <button class="btn-add-place" id="btn-add-place-text" type="button" style="width: 45px; height: 45px; border-radius: 12px; background: #8e44ad; color: white; border: none; cursor: pointer;"><i
+                            class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <button class="btn-search-map" id="btn-open-places-modal" type="button" data-i18n="itin_search_map">
+                    <i class="fa-solid fa-magnifying-glass"></i> Rechercher un lieu sur la carte
+                </button>
+            </div>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
+            <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: #1e293b;" data-i18n="itin_reco_title">Informations pour recommandation</h3>
+            
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_duration_label">Durée du séjour (en jours)</label>
+                <input type="number" id="itinDurationInput" class="itin-form-input" min="1" placeholder="Ex: 3" data-i18n="itin_duration_placeholder">
+            </div>
+
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_budget_label">Budget estimé (MAD)</label>
+                <input type="number" id="itinBudgetInput" class="itin-form-input" min="0" placeholder="Ex: 5000" data-i18n="itin_budget_placeholder">
+            </div>
+
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_type_label">Type d'itinéraire</label>
+                <select id="itinTypeSelect" class="itin-form-input" style="color: #666; font-family: 'Inter', sans-serif;">
+                    <option value="culture" data-i18n="itin_type_culture">Culture</option>
+                    <option value="aventure" data-i18n="itin_type_aventure">Aventure</option>
+                    <option value="relax" data-i18n="itin_type_relax">Relax</option>
+                    <option value="luxe" data-i18n="itin_type_luxe">Luxe</option>
+                </select>
+            </div>
+            
+            <div class="itin-form-group">
+                <label class="itin-form-label" data-i18n="itin_places_auto_label">Nombre de lieux (calculé auto.)</label>
+                <input type="number" id="itinPlacesCountAuto" class="itin-form-input" disabled value="0" style="background: #f1f5f9; cursor: not-allowed; color: #94a3b8; font-weight: 600;">
+            </div>
+
+            <button class="btn-save-itin" id="btn-save-itinerary" type="button" data-i18n="itin_save_btn">
+                <i class="fa-solid fa-floppy-disk"></i> Sauvegarder l'itinéraire
+            </button>
+            <button class="btn-save-itin" id="btn-cancel-itinerary" type="button"
+                style="background: #f1f5f9; color: #475569; margin-top: 10px;" data-i18n="itin_cancel_btn">
+                Annuler
+            </button>
+            <button class="btn-save-itin" id="btn-reco-collab" type="button" disabled
+                style="background: #e2e8f0; color: #94a3b8; margin-top: 10px; transition: all 0.3s ease;" data-i18n="itin_reco_collab_btn">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Recommander pour vous
+            </button>
+        </div>
+
+        <!-- Right Col: List -->
+        <div class="itin-list-col" id="itineraries-dashboard">
+            <h2 class="itin-list-title" data-i18n="itin_saved_title">Itinéraires sauvegardés</h2>
+
+            <div id="itinerariesContainer">
+                <p style="text-align: center; padding: 20px;" data-i18n="itin_loading">Chargement...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Places Modal for searching -->
+    <div id="placesModal" class="modal-overlay">
+        <div class="modal-content modal-content-simple">
+            <span class="close-modal close-modal-simple">&times;</span>
+            <div class="modal-header">
+                <h2 data-i18n="modal_places_title">Lieux Incontournables</h2>
+                <div class="modal-search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Chercher un stade, un musée..." data-i18n="modal_places_placeholder">
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="available-places-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reco Modal for recommendations -->
+    <div id="recoModal" class="modal-overlay">
+        <div class="modal-content modal-content-simple">
+            <span class="close-modal close-modal-reco">&times;</span>
+            <div class="modal-header">
+                <h2 data-i18n="modal_reco_title">Recommandations pour vous</h2>
+                <p style="color: #64748b; font-size: 0.9rem;" data-i18n="modal_reco_desc">Basé sur vos choix et ceux des autres voyageurs.</p>
+            </div>
+            <div class="modal-body">
+                <div id="recommended-places-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="user_actions.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="itineraries.js"></script>
+    <script>
+        // Backup: ensure translations applied after all scripts
+        window.addEventListener('load', function() {
+            if (window.applyUITranslations && window.getCurrentLang) {
+                window.applyUITranslations(window.getCurrentLang());
+            }
+        });
+    </script>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+
+</html>

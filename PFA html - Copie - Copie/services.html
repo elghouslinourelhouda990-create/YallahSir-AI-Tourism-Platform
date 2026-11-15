@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Morocco 2030</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+                            <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <img src="logo.png" alt="Morocco 2030 Logo" class="logo-img">
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">Morocco 2030</span>
+                <span class="logo-subtitle">World Cup Guide</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item" data-i18n="nav_home">Accueil</a>
+            <a href="map.html" class="nav-item" data-i18n="nav_map">Carte</a>
+            <a href="matches.html" class="nav-item" data-i18n="nav_matches">Matchs</a>
+            <a href="culture.html" class="nav-item" data-i18n="nav_culture">Culture</a>
+            <a href="activities.html" class="nav-item" data-i18n="nav_activities">Activit&eacute;s</a>
+            <a href="itineraries.html" class="nav-item" data-i18n="nav_itineraries">Itin&eacute;raires</a>
+            <a href="services.html" class="nav-item" data-i18n="nav_services">Services</a>
+            <a href="chat.html" class="nav-item" data-i18n="nav_chat">Assistant</a>
+        </nav>
+        <div class="auth-buttons">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langBtn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="currentLang">Fran&ccedil;ais</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" data-lang="fr" class="active">Fran&ccedil;ais</a>
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="ar">&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;</a>
+                    <a href="#" data-lang="es">Espa&ntilde;ol</a>
+                </div>
+            </div>
+            
+            <!-- Notifications Icon -->
+            <div class="notification-wrapper">
+                <button class="notif-btn" id="notifBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notif-badge-indicator"></span>
+                </button>
+                <div class="notif-dropdown" id="notifDropdown">
+                    <div class="notif-header">
+                        <h4 data-i18n="notifications_title">Notifications</h4>
+                        <span class="mark-read" data-i18n="mark_all_read">Marquer tout comme lu</span>
+                    </div>
+                    <div class="notif-list">
+                        <!-- Notifications injected via script -->
+                    </div>
+                </div>
+            </div>
+            <div id="authContainer" class="auth-buttons-wrapper">
+                <!-- Fallback content if JS is slow -->
+                <a href="login.html" class="btn-login" data-i18n="login_btn">Connexion</a>
+                <a href="signup.html" class="btn-signup" data-i18n="signup_btn">S'inscrire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <h1 data-i18n="services_title"><i class="fa-solid fa-bell-concierge"></i> Transport & Services</h1>
+        <p data-i18n="services_subtitle">Tous les moyens de transport et services pratiques pour votre séjour</p>
+
+        <div class="search-bar" style="margin: 20px auto 0; background: white;">
+            <input type="text" id="main-search-input" placeholder="Rechercher un lieu, ville, hôtel..." data-i18n="search_placeholder">
+            <button id="main-search-btn"><i class="fa-solid fa-search"></i></button>
+            <div id="search-results" class="search-results-dropdown"></div>
+        </div>
+    </section>
+
+    <!-- Transports Section -->
+    <div class="section-header-centered">
+        <div class="section-subtitle" data-i18n="services_subtitle_se_deplacer">SE DÉPLACER</div>
+        <h2 class="section-title" data-i18n="services_title_moyens">Moyens de Transport</h2>
+    </div>
+
+    <div id="services-grid" class="services-grid">
+        <!-- Services will be loaded from MongoDB via script.js -->
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i>
+            <p data-i18n="services_loading">Chargement des services depuis MongoDB...</p>
+        </div>
+    </div>
+
+    <!-- Pagination Container -->
+    <div id="services-pagination" class="pagination-container"></div>
+
+    <!-- Practical Info & Tips -->
+    <div class="banners-container">
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <div class="info-header">
+                <i class="fa-solid fa-circle-info"></i> <span data-i18n="info_title">Informations Pratiques</span>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-money-bill-1-wave"></i></div>
+                    <div class="info-content">
+                        <h4 data-i18n="info_money">Monnaie & Paiement</h4>
+                        <p data-i18n="info_money_desc">Dirham marocain (MAD). Cartes acceptées dans les grandes villes, mais prévoyez du cash pour
+                            les souks et zones rurales.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-plug"></i></div>
+                    <div class="info-content">
+                        <h4 data-i18n="info_elec">Électricité</h4>
+                        <p data-i18n="info_elec_desc">220V, prises européennes (type C et E). Prévoyez un adaptateur si nécessaire.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-wifi"></i></div>
+                    <div class="info-content">
+                        <h4 data-i18n="info_net">Internet</h4>
+                        <p data-i18n="info_net_desc">4G/5G disponible dans les villes. WiFi gratuit dans la plupart des hôtels et cafés.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-briefcase-medical"></i></div>
+                    <div class="info-content">
+                        <h4 data-i18n="info_health">Santé</h4>
+                        <p data-i18n="info_health_desc">Aucun vaccin obligatoire. Eau du robinet non potable. Assurances voyage recommandées.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Banner -->
+        <div class="tips-banner">
+            <div class="tips-header">
+                <i class="fa-solid fa-lightbulb"></i> <span data-i18n="tips_title">Conseils pour la Coupe du Monde</span>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fa-solid fa-clock"></i>
+                    <h4 data-i18n="tips_plan">Anticipez</h4>
+                    <p data-i18n="tips_plan_desc">Réservez votre transport et hébergement plusieurs mois à l'avance</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fa-solid fa-ticket"></i>
+                    <h4 data-i18n="tips_fanid">Fan ID</h4>
+                    <p data-i18n="tips_fanid_desc">Obtenez votre Fan ID pour des transports publics gratuits les jours de match</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fa-solid fa-temperature-half"></i>
+                    <h4 data-i18n="tips_climate">Climat</h4>
+                    <p data-i18n="tips_climate_desc">Juin peut être chaud (25-35°C). Prévoyez chapeau, crème solaire et eau</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <h4 data-i18n="tips_hosp">Hospitalité</h4>
+                    <p data-i18n="tips_hosp_desc">Les Marocains sont accueillants. Apprenez quelques mots d'arabe ou de darija</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="user_actions.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Backup: ensure translations applied after all scripts
+        window.addEventListener('load', function() {
+            if (window.applyUITranslations && window.getCurrentLang) {
+                window.applyUITranslations(window.getCurrentLang());
+            }
+        });
+    </script>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+

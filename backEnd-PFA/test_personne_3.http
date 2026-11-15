@@ -1,0 +1,130 @@
+### Personne 3 Test Suite
+
+# Variables
+@baseUrl = http://localhost:5000/api
+@token = {{login.response.body.token}}
+
+### 1️⃣ LOGIN (Pour récupérer le token JWT)
+# @name login
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email_user": "test@test.com",
+    "Mot_de_passe": "password123"
+}
+
+
+
+### ==========================================
+### 🗺️ ITINÉRAIRES (Protégés par Token)
+### ==========================================
+
+### 🟢 POST /itineraires (Créer un itinéraire)
+POST {{baseUrl}}/itineraires
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWI1Yjc1MmU0Y2NmZDBmZWM5NmY1MCIsImlhdCI6MTc3MjgzNzkyNSwiZXhwIjoxNzc1NDI5OTI1fQ.lamxcw4bEWU2pC_BSkLUPmyKj9B5hAbTuKjbR80DJV4
+
+{
+    "nom_itineraire": "Weekend à Marrakech",
+    "activites_choisies": []
+}
+
+### 🟢 GET /my-itineraires (Mes itinéraires)
+GET {{baseUrl}}/itineraires/my-itineraires
+Authorization: Bearer {{token}}
+
+### 🟢 PUT /itineraires/:id/add-lieu (Ajouter lieu)
+# Remplace `ID_ITINERAIRE` par l'ID retourné lors de la création
+@idItineraire = ID_ITINERAIRE
+PUT {{baseUrl}}/itineraires/{{idItineraire}}/add-lieu
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id_activite": "60d5ec49f1db7c2e08c02a71" 
+}
+
+### 🟢 DELETE /itineraires/:id/remove-lieu (Retirer lieu)
+DELETE {{baseUrl}}/itineraires/{{idItineraire}}/remove-lieu
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id_activite": "60d5ec49f1db7c2e08c02a71"
+}
+
+### 🟢 DELETE /itineraires/:id (Supprimer itinéraire)
+DELETE {{baseUrl}}/itineraires/{{idItineraire}}
+Authorization: Bearer {{token}}
+
+
+
+### ==========================================
+### ⚽ MATCHS (World Cup 2030)
+### ==========================================
+
+### 🟢 GET /matchs
+GET {{baseUrl}}/matchs
+
+### 🟢 POST /matchs (Création)
+POST {{baseUrl}}/matchs
+Content-Type: application/json
+
+{
+    "id_match": 1,
+    "equipe_A": "Senegal",
+    "equipe_B": "Netherlands",
+    "date_match": "30/06/2030",
+    "resultat_match": "1-1",
+    "id_lieu": 37
+}
+
+### 🟢 GET /matchs/:id (Par ID Mongo)
+@idMatch = ID_MONGO_MATCH
+GET {{baseUrl}}/matchs/{{idMatch}}
+
+### 🟢 PUT /matchs/:id (Mise à jour)
+PUT {{baseUrl}}/matchs/{{idMatch}}
+Content-Type: application/json
+
+{
+    "resultat_match": "2-1"
+}
+
+### 🟢 DELETE /matchs/:id (Suppression)
+DELETE {{baseUrl}}/matchs/{{idMatch}}
+
+
+
+### ==========================================
+### 🔔 NOTIFICATIONS
+### ==========================================
+
+### 🟢 POST /notifications (Créer une notification)
+POST {{baseUrl}}/notifications
+Content-Type: application/json
+
+{
+    "id_Notification": 1,
+    "type_Notification": "info",
+    "contenu_Notification": "Ceci est une notification de test"
+}
+
+### 🟢 GET /notifications (Récupérer les notifications)
+GET {{baseUrl}}/notifications
+
+
+### 🟢 PUT /notifications/:id/read (Marquer comme lue)
+# Remplace `ID_MONGO_NOTIFICATION` par l'attribut `_id` de la notification récupérée ci-dessus !
+@idNotification = 69ab649260c37e78d9a4a530
+PUT {{baseUrl}}/notifications/{{idNotification}}/read
+
+POST http://localhost:5000/api/notifications
+Content-Type: application/json
+
+{
+  "id_Notification": 999,
+  "type_Notification": "succes",
+  "contenu_Notification": "Bravo ! Votre système de notifications dynamique fonctionne !"
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenue — Coupe du Monde 2030</title>
+  <link rel="stylesheet" href="recommendation.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <section id="splash">
+    <div class="wc-card" style="max-width: 550px;">
+      <p class="wc-greeting" id="splash-greeting" style="color: #fb7185; font-size: 18px; margin-bottom: 16px;">Bienvenue ! 🎉</p>
+      <h2 class="wc-heading" style="font-size: 36px; margin-bottom: 24px; line-height: 1.3;">Tu es prêt(e) pour la Coupe<br>du Monde 2030</h2>
+      <p class="wc-body" style="font-size: 17px; margin-bottom: 36px; line-height: 1.6;">Ton profil est configuré. L'aventure commence maintenant — prépare-toi à découvrir les meilleurs lieux, matchs, activités et événements.</p>
+      
+      <div style="margin-bottom: 40px;">
+        <span style="background: rgba(0, 98, 51, 0.3); color: #a7f3d0; padding: 12px 24px; border-radius: 99px; font-weight: 600; font-size: 15px; border: 1px solid rgba(167, 243, 208, 0.2); box-shadow: 0 4px 15px rgba(0, 98, 51, 0.2);">
+          Le Maroc t'attend ⚽ MA
+        </span>
+      </div>
+      
+      <button class="wc-cta" onclick="startOnboarding()">Continuer →</button>
+    </div>
+  </section>
+
+  <section id="s-lang" class="ob-screen">
+    <div class="topbar">
+      <div style="width: 36px;"></div>
+      <span class="topbar-brand">🇲🇦 WC 2030</span>
+      <div style="width: 36px;"></div>
+    </div>
+    <div class="prog-wrap">
+      <div class="prog-fill" style="width:0%"></div>
+    </div>
+    <div class="q-area">
+      <div class="q-icon">🌐</div>
+      <h2 class="q-title">Choisissez votre langue</h2>
+      <p class="q-sub">Appuyez pour choisir / Tap to select / Toca para seleccionar</p>
+      <div class="lang-grid">
+        <div class="lang-card" data-lang="ar" onclick="selectLang(this)">
+          <div class="lc-flag">🇲🇦</div>
+          <div class="lc-name">العربية</div>
+          <div class="lc-native">Arabic</div>
+          <div class="lc-check"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="lang-card" data-lang="fr" onclick="selectLang(this)">
+          <div class="lc-flag">🇫🇷</div>
+          <div class="lc-name">Français</div>
+          <div class="lc-native">French</div>
+          <div class="lc-check"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="lang-card" data-lang="es" onclick="selectLang(this)">
+          <div class="lc-flag">🇪🇸</div>
+          <div class="lc-name">Español</div>
+          <div class="lc-native">Spanish</div>
+          <div class="lc-check"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="lang-card" data-lang="en" onclick="selectLang(this)">
+          <div class="lc-flag">🇬🇧</div>
+          <div class="lc-name">English</div>
+          <div class="lc-native">English</div>
+          <div class="lc-check"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-cont red-btn" id="b-lang" disabled onclick="applyLanguage()">Continuer →</button>
+  </section>
+
+  <section id="s0" class="ob-screen">
+    <div class="topbar">
+      <button class="back-link" onclick="goStep('-lang')"><i class="fa-solid fa-chevron-left"></i></button>
+      <span class="topbar-brand">🇲🇦 WC 2030</span>
+      <button class="skip-link" id="sk0" onclick="goStep(1)"></button>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:20%"></div></div>
+    <div class="q-area">
+      <div class="q-icon">⚽</div>
+      <h2 class="q-title" id="q0t"></h2>
+      <p class="q-sub" id="q0s"></p>
+      <div class="team-grid" id="team-grid">
+        <div class="team-card" data-v="maroc" onclick="toggleTeam(this)">
+          <div class="tc-flag">🇲🇦</div><div class="tc-name" id="tn-maroc"></div>
+        </div>
+        <div class="team-card" data-v="france" onclick="toggleTeam(this)">
+          <div class="tc-flag">🇫🇷</div><div class="tc-name" id="tn-france"></div>
+        </div>
+        <div class="team-card" data-v="bresil" onclick="toggleTeam(this)">
+          <div class="tc-flag">🇧🇷</div><div class="tc-name" id="tn-bresil"></div>
+        </div>
+        <div class="team-card" data-v="espagne" onclick="toggleTeam(this)">
+          <div class="tc-flag">🇪🇸</div><div class="tc-name" id="tn-espagne"></div>
+        </div>
+        <div class="team-card" data-v="argentine" onclick="toggleTeam(this)">
+          <div class="tc-flag">🇦🇷</div><div class="tc-name" id="tn-argentine"></div>
+        </div>
+        <div class="team-card" data-v="portugal" onclick="toggleTeam(this)">
+          <div class="tc-flag">🇵🇹</div><div class="tc-name" id="tn-portugal"></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-cont red-btn" id="b0" disabled onclick="goStep(1)">Continuer →</button>
+  </section>
+
+  <section id="s1" class="ob-screen">
+    <div class="topbar">
+      <button class="back-link" onclick="goStep(0)"><i class="fa-solid fa-chevron-left"></i></button>
+      <span class="topbar-brand">🇲🇦 WC 2030</span>
+      <button class="skip-link" id="sk1" onclick="goStep(2)"></button>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:40%"></div></div>
+    <div class="q-area">
+      <div class="q-icon">🏟️</div>
+      <h2 class="q-title" id="q1t"></h2>
+      <p class="q-sub" id="q1s"></p>
+      <div class="opt-grid" id="og1">
+        <div class="opt-card" data-v="finales" onclick="toggleOptCard(this,'og1','b1')">
+          <div class="oc-img">🏆</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="mt-finales"></div></div>
+        </div>
+        <div class="opt-card" data-v="derbies" onclick="toggleOptCard(this,'og1','b1')">
+          <div class="oc-img">🔥</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="mt-derbies"></div></div>
+        </div>
+        <div class="opt-card" data-v="groupes" onclick="toggleOptCard(this,'og1','b1')">
+          <div class="oc-img">⚽</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="mt-groupes"></div></div>
+        </div>
+        <div class="opt-card" data-v="surprises" onclick="toggleOptCard(this,'og1','b1')">
+          <div class="oc-img">🎲</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="mt-surprises"></div></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-cont red-btn" id="b1" disabled onclick="goStep(2)">Continuer →</button>
+  </section>
+
+  <section id="s2" class="ob-screen">
+    <div class="topbar">
+      <button class="back-link" onclick="goStep(1)"><i class="fa-solid fa-chevron-left"></i></button>
+      <span class="topbar-brand">🇲🇦 WC 2030</span>
+      <button class="skip-link" id="sk2" onclick="goStep(3)"></button>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:60%"></div></div>
+    <div class="q-area">
+      <div class="q-icon">🏠</div>
+      <h2 class="q-title" id="q2t"></h2>
+      <p class="q-sub" id="q2s"></p>
+      <div class="opt-list" id="ol2">
+        <div class="opt-row one" data-v="stade" onclick="pickOne(this,'ol2','b2')">
+          <span class="or-icon">🏟️</span>
+          <div><div class="or-title" id="wh-stade"></div><div class="or-sub" id="wh-stade-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="opt-row one" data-v="cafe" onclick="pickOne(this,'ol2','b2')">
+          <span class="or-icon">☕</span>
+          <div><div class="or-title" id="wh-cafe"></div><div class="or-sub" id="wh-cafe-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="opt-row one" data-v="fanzone" onclick="pickOne(this,'ol2','b2')">
+          <span class="or-icon">🎉</span>
+          <div><div class="or-title" id="wh-fanzone"></div><div class="or-sub" id="wh-fanzone-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="opt-row one" data-v="maison" onclick="pickOne(this,'ol2','b2')">
+          <span class="or-icon">🏠</span>
+          <div><div class="or-title" id="wh-maison"></div><div class="or-sub" id="wh-maison-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-cont red-btn" id="b2" disabled onclick="goStep(3)">Continuer →</button>
+  </section>
+
+  <section id="s3" class="ob-screen">
+    <div class="topbar">
+      <button class="back-link" onclick="goStep(2)"><i class="fa-solid fa-chevron-left"></i></button>
+      <span class="topbar-brand">🇲🇦 WC 2030</span>
+      <button class="skip-link" id="sk3" onclick="goStep(4)"></button>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:80%"></div></div>
+    <div class="q-area">
+      <div class="q-icon">🎨</div>
+      <h2 class="q-title" id="q3t"></h2>
+      <p class="q-sub" id="q3s"></p>
+      <div class="opt-grid" id="og3">
+        <div class="opt-card" data-v="gastro" onclick="toggleOptCard(this,'og3','b3')">
+          <div class="oc-img">🍜</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="act-gastro"></div></div>
+        </div>
+        <div class="opt-card" data-v="visite" onclick="toggleOptCard(this,'og3','b3')">
+          <div class="oc-img">🕌</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="act-visite"></div></div>
+        </div>
+        <div class="opt-card" data-v="shop" onclick="toggleOptCard(this,'og3','b3')">
+          <div class="oc-img">🛍️</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="act-shop"></div></div>
+        </div>
+        <div class="opt-card" data-v="soiree" onclick="toggleOptCard(this,'og3','b3')">
+          <div class="oc-img">🎶</div>
+          <div class="oc-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+          <div class="oc-body"><div class="oc-label" id="act-soiree"></div></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-cont red-btn" id="b3" disabled onclick="goStep(4)">Continuer →</button>
+  </section>
+
+  <section id="s4" class="ob-screen">
+    <div class="topbar">
+      <button class="back-link" onclick="goStep(3)"><i class="fa-solid fa-chevron-left"></i></button>
+      <span class="topbar-brand">🇲🇦 WC 2030</span>
+      <button class="skip-link" id="sk4" onclick="finish()"></button>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:100%"></div></div>
+    <div class="q-area">
+      <div class="q-icon">⭐</div>
+      <h2 class="q-title" id="q4t"></h2>
+      <p class="q-sub" id="q4s"></p>
+      <div class="opt-list" id="ol4">
+        <div class="opt-row" data-v="grands" onclick="toggleOptRow(this,'ol4','b4')">
+          <span class="or-icon">🏅</span>
+          <div><div class="or-title" id="ev-grands"></div><div class="or-sub" id="ev-grands-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="opt-row" data-v="fans" onclick="toggleOptRow(this,'ol4','b4')">
+          <span class="or-icon">🎪</span>
+          <div><div class="or-title" id="ev-fans"></div><div class="or-sub" id="ev-fans-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="opt-row" data-v="concerts" onclick="toggleOptRow(this,'ol4','b4')">
+          <span class="or-icon">🎤</span>
+          <div><div class="or-title" id="ev-concerts"></div><div class="or-sub" id="ev-concerts-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+        <div class="opt-row" data-v="culture" onclick="toggleOptRow(this,'ol4','b4')">
+          <span class="or-icon">🎭</span>
+          <div><div class="or-title" id="ev-culture"></div><div class="or-sub" id="ev-culture-s"></div></div>
+          <div class="or-chk"><svg viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L11 1" /></svg></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-cont red-btn" id="b4" disabled onclick="finish()">Terminer →</button>
+  </section>
+
+  <script src="recommendation.js"></script>
+</body>
+</html>

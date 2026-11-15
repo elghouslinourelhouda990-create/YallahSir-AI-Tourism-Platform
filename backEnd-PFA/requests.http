@@ -1,0 +1,58 @@
+### Ce fichier te permet de tester l'API directement depuis VS Code !
+### Prérequis : Installe l'extension "REST Client" ou "Thunder Client" dans VS Code.
+### Avec "REST Client", un petit bouton "Send Request" apparaîtra au-dessus de chaque route.
+
+@baseUrl = http://localhost:5000/api/users
+
+### 1. 📝 S'INSCRIRE (Créer un nouveau compte)
+# Remplace les valeurs par celles que tu souhaites tester.
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+  "nom_user": "Fatima Zahra",
+  "email_user": "fatima.test@example.com",
+  "Mot_de_passe": "secret123",
+  "pays_user": "Maroc",
+  "langue_maternelle": "Arabe"
+}
+
+### ------------------------------------------------------------------------
+
+### 2. 🔐 SE CONNECTER
+# Cette requête va te renvoyer un "token" crypté. 
+# ⚠️ COPIE ce "token" sans les guillemets pour l'utiliser dans la requête suivante.
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email_user": "fatima.test@example.com",
+  "Mot_de_passe": "secret123"
+}
+
+### ------------------------------------------------------------------------
+
+### 3. 👤 VOIR SON PROFIL (Route Protégée)
+# ⚠️ Remplace <COLLE_TON_TOKEN_ICI> par le token obtenu lors de la connexion.
+GET {{baseUrl}}/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTMyMjZjMTkxZGEyMTYyODA5NWJkNCIsImlhdCI6MTc3MjI5ODkzNywiZXhwIjoxNzc0ODkwOTM3fQ.oF3FxekgPBH3zFXcsRSYdabKH3iILnVcc7UM4b4ZqLc
+
+### ------------------------------------------------------------------------
+
+### 4. ✏️ METTRE À JOUR SON PROFIL (Route Protégée)
+# ⚠️ N'oublie pas de coller ton token !
+PUT {{baseUrl}}/update-profile
+Authorization: Bearer <COLLE_TON_TOKEN_ICI>
+Content-Type: application/json
+
+{
+  "nom_user": "Fatima Zahra Modifié",
+  "pays_user": "France"
+}
+
+### ------------------------------------------------------------------------
+
+### 5. ❌ SUPPRIMER SON COMPTE (Route Protégée)
+# ⚠️ Attention, cette action effacera l'utilisateur de MongoDB.
+DELETE {{baseUrl}}/delete-account
+Authorization: Bearer <COLLE_TON_TOKEN_ICI>
